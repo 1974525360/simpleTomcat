@@ -1,9 +1,6 @@
 package org.how.tomcat.works.ex01;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.io.File;
 import java.io.FileInputStream;

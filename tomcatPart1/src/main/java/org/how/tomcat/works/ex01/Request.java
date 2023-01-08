@@ -1,5 +1,7 @@
 package org.how.tomcat.works.ex01;
 
+import lombok.Data;
+
 import java.io.InputStream;
 
 /**
@@ -8,6 +10,7 @@ import java.io.InputStream;
  * @Date 2023/01/08/22:00
  * @Version 1.0
  */
+@Data
 public class Request {
 
     private InputStream inputStream;
@@ -46,9 +49,5 @@ public class Request {
             }
         }
         return null;
-    }
-
-    public String getUri() {
-        return uri;
     }
 }
