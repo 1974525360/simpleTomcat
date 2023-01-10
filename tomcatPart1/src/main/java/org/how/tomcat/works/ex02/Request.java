@@ -1,4 +1,4 @@
-package org.how.tomcat.works.ex01;
+package org.how.tomcat.works.ex02;
 
 import lombok.Data;
 

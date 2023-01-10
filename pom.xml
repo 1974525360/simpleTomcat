@@ -9,17 +9,18 @@
     <packaging>pom</packaging>
     <version>1.0</version>
 
-    <name>tomcat</name>
+    <name>simpleTomcat</name>
     <description>web系统</description>
 
     <modules>
         <module>tomcatPart1</module>
+        <module>tomcatPart2</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -36,7 +37,17 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.24</version>
             </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.3</version><!-- 这里使用低版本的servlet -->
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
+
+
     </dependencyManagement>
 
 </project>
