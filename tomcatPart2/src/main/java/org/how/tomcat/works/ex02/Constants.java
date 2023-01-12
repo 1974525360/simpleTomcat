@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class Constants {
     private static final String WEB_ROOT =
-            System.getProperty("user.dir") + File.separator  + "webroot";
+            System.getProperty("user.dir")+ File.separator  + "webroot";
 
     public static String getWebRoot() {
         return WEB_ROOT;

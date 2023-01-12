@@ -18,11 +18,23 @@ import java.util.Map;
  * @date: 2023/1/9
  * @version: 1.0
  */
-@Data
 public class Request implements ServletRequest{
 
     private InputStream inputStream;
     private String uri;
+    
+
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String getUri() {
+        return uri;
+    }
 
     public Request(InputStream inputStream) {
         this.inputStream = inputStream;

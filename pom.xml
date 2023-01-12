@@ -15,6 +15,7 @@
     <modules>
         <module>tomcatPart1</module>
         <module>tomcatPart2</module>
+        <module>tomcatPart3</module>
     </modules>
 
     <properties>
@@ -42,7 +43,6 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>2.3</version><!-- 这里使用低版本的servlet -->
-                <scope>provided</scope>
             </dependency>
 
         </dependencies>
