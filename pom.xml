@@ -16,6 +16,8 @@
         <module>tomcatPart1</module>
         <module>tomcatPart2</module>
         <module>tomcatPart3</module>
+        <module>simpleTomcatUtil</module>
+        <module>tomcatUtil</module>
     </modules>
 
     <properties>

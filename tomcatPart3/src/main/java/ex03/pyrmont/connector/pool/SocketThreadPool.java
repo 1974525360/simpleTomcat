@@ -1,8 +1,5 @@
 package ex03.pyrmont.connector.pool;
 
-import ex03.pyrmont.connector.factory.SocketThreadPoolFactory;
-
-import javax.security.auth.callback.CallbackHandler;
 import java.util.concurrent.*;
 
 /**
@@ -13,13 +10,53 @@ import java.util.concurrent.*;
  */
 public class SocketThreadPool {
 
-    BlockingDeque<Runnable> blockingDeque = new LinkedBlockingDeque<>();
-    SocketThreadPoolFactory factory = new SocketThreadPoolFactory();
+    private int corePoolSize;
+    private int maximumPoolSize;
+    private long keepAliveTime;
+    private TimeUnit unit;
+    private BlockingQueue<Runnable> workQueue;
+    private ThreadFactory threadFactory;
+    private RejectedExecutionHandler handler;
+    private ThreadPoolExecutor threadPoolExecutor;
 
-    ThreadPoolExecutor executor = new ThreadPoolExecutor(4, 4, 30, TimeUnit.SECONDS, blockingDeque, factory, new RejectedExecutionHandler() {
-        @Override
-        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-            System.out.println("线程池");
+    private volatile static   SocketThreadPool socketThreadPool;
+
+    private SocketThreadPool(ThreadFactory threadFactory) {
+        corePoolSize = 10;
+        maximumPoolSize = 20;
+        keepAliveTime = 30;
+        unit = TimeUnit.SECONDS;
+        workQueue = new ArrayBlockingQueue<>(30);
+        this.threadFactory = threadFactory;
+        threadPoolExecutor = new ThreadPoolExecutor(corePoolSize,maximumPoolSize,keepAliveTime,unit,workQueue,threadFactory);
+
+    }
+
+    private SocketThreadPool(){
+        corePoolSize = 10;
+        maximumPoolSize = 20;
+        keepAliveTime = 30;
+        unit = TimeUnit.SECONDS;
+        workQueue = new ArrayBlockingQueue<>(30);
+        threadFactory = Executors.defaultThreadFactory();
+        threadPoolExecutor = new ThreadPoolExecutor(corePoolSize,maximumPoolSize,keepAliveTime,unit,workQueue,threadFactory);
+    }
+
+    public Future<String> submit(Callable<String> call){
+        return threadPoolExecutor.submit(call);
+    }
+
+    public void execute(Runnable r){
+        threadPoolExecutor.execute(r);
+    }
+
+    public static  SocketThreadPool getInstance(){
+        if(socketThreadPool==null){
+            synchronized (SocketThreadPool.class){
+                socketThreadPool = new SocketThreadPool();
+            }
         }
-    });
+        return socketThreadPool;
+    }
+
 }

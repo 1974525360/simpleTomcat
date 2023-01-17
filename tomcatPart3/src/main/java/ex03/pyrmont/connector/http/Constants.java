@@ -1,4 +1,4 @@
-package ex03.pyrmont.connector;
+package ex03.pyrmont.connector.http;
 import java.io.File;
 
 public final class Constants {
